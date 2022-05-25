@@ -3,4 +3,8 @@ module.exports = class Aperture {
         this.height = height;
         this.width = width;
     }
+
+    getApertureArea() {
+        return this.width * this.height;
+    }
 }

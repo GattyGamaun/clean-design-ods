@@ -1,5 +1,4 @@
 const assert = require('assert');
-const FundCalculator = require('../src/FundCalculator');
 const BillCalculator = require('../src/BillCalculator');
 const Worker = require('../src/Worker');
 const Assignment = require('../src/Assignment');
@@ -9,10 +8,10 @@ const WrongZoneTypeException = require('../src/WrongZoneTypeException');
 
 describe('FundCalculator integration', () => {
     let assignments = [];
-    const fundCalculator = new FundCalculator();
+    const billCalculator = new BillCalculator();
 
     const assertBalance = expected => {
-        assert.strictEqual(fundCalculator.getFundBalance(assignments), expected);
+        assert.strictEqual(billCalculator.getBillBalance(assignments), expected);
     }
 
     const assign = (worker, zones) => {
@@ -39,7 +38,7 @@ describe('FundCalculator integration', () => {
 
     it('should throw exception when zone with wrong type', () => {
         assign(new Worker(250, 30), [new Zone('Other', 5, 6)])
-        assert.throws(() => fundCalculator.getFundBalance(assignments), WrongZoneTypeException);
+        assert.throws(() => billCalculator.getBillBalance(assignments), WrongZoneTypeException);
     });
 
     it('should calculate balance when one worker with one wall assignment', () => {
