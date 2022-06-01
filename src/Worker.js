@@ -1,26 +1,28 @@
 class Worker {
-    constructor(dailyRate, amountPerDay, isJunior = false) {
+    constructor(dailyRate, amountPerDay) {
         this.dailyRate = dailyRate;
         this.amountPerDay = amountPerDay;
-        this.isJunior = isJunior;
     }
 
-    calculateSalary(area) {
-        const days = Math.ceil(area / this.amountPerDay);
-        const baseSalary = this.dailyRate * days;
-        return this.isJunior ? baseSalary : baseSalary * Worker.SENIOR_SALARY_FACTOR;
+    calculateSalary() {
+        throw new Error('The method must be implemented');
     }
 
-    getAssignmentBonus(assignment) {
-        return this.isJunior ? assignment.vendorBonus : assignment.vendorBonus * Worker.SENIOR_BONUS_FACTOR;
+    getSalaryFactor() {
+        throw new Error('The method must be implemented');
     }
 
-    getSalary(area, assigment) {
-        return this.calculateSalary(area) + this.getAssignmentBonus(assigment);
+    getBonusFactor() {
+        throw new Error('The method must be implemented');
+    }
+
+    getAssignmentBonus() {
+        throw new Error('The method must be implemented');
+    }
+
+    getSalary() {
+        throw new Error('The method must be implemented');
     }
 }
-
-Worker.SENIOR_SALARY_FACTOR = 1.2;
-Worker.SENIOR_BONUS_FACTOR = 1.5;
 
 module.exports = Worker;
