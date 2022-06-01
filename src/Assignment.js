@@ -1,6 +1,6 @@
 const {summing} = require("./CalculationUtil");
 
-class Assignment {
+module.exports = class Assignment {
     constructor(worker, zones, vendorBonus) {
         this.worker = worker;
         this.zones = zones;
@@ -20,5 +20,3 @@ class Assignment {
         return bill - salaries;
     }
 }
-
-module.exports = Assignment;

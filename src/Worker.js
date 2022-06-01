@@ -1,4 +1,4 @@
-class Worker {
+module.exports = class Worker {
     constructor(dailyRate, amountPerDay) {
         this.dailyRate = dailyRate;
         this.amountPerDay = amountPerDay;
@@ -24,5 +24,3 @@ class Worker {
         throw new Error('The method must be implemented');
     }
 }
-
-module.exports = Worker;

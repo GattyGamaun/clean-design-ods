@@ -1,6 +1,6 @@
 const Worker = require('./Worker');
 
-class JuniorWorker extends Worker {
+module.exports = class JuniorWorker extends Worker {
     calculateSalary(area) {
         const days = Math.ceil(area / this.amountPerDay);
         return this.dailyRate * days;
@@ -14,5 +14,3 @@ class JuniorWorker extends Worker {
         return this.calculateSalary(area) + this.getAssignmentBonus(assigment);
     }
 }
-
-module.exports = JuniorWorker;

@@ -1,6 +1,6 @@
 const Worker = require('./Worker');
 
-class SeniorWorker extends Worker {
+module.exports = class SeniorWorker extends Worker {
     static get salaryFactor() {
         return 1.2;
     }
@@ -22,5 +22,3 @@ class SeniorWorker extends Worker {
         return this.dailyRate * days * SeniorWorker.salaryFactor;
     }
 }
-
-module.exports = SeniorWorker;
