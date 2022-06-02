@@ -4,10 +4,6 @@ module.exports = class Worker {
         this.amountPerDay = amountPerDay;
     }
 
-    calculateSalary() {
-        throw new Error('The method must be implemented');
-    }
-
     getSalaryFactor() {
         throw new Error('The method must be implemented');
     }
@@ -16,11 +12,8 @@ module.exports = class Worker {
         throw new Error('The method must be implemented');
     }
 
-    getAssignmentBonus() {
-        throw new Error('The method must be implemented');
-    }
-
-    getSalary() {
-        throw new Error('The method must be implemented');
+    calculateSalary(area) {
+        const days = Math.ceil(area / this.amountPerDay);
+        return this.dailyRate * days * this.getSalaryFactor();
     }
 }

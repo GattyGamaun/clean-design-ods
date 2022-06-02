@@ -12,9 +12,13 @@ module.exports = class Assignment {
         return zone.getZoneBillPrice(Assignment.zoneTypeWorkPrice);
     }
 
+    getAssignmentBonus() {
+        return this.vendorBonus * this.worker.getBonusFactor();
+    }
+
     getSummary() {
         const totalArea = summing(this.zones, this.zones[0].getArea)
-        const salaries = this.worker.getSalary(totalArea, this);
+        const salaries = this.worker.calculateSalary(totalArea) + this.getAssignmentBonus();
         const bill = summing(this.zones, this.calculateZoneBillPrice.bind(this));
 
         return bill - salaries;
