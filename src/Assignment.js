@@ -17,9 +17,11 @@ module.exports = class Assignment {
     }
 
     getSummary() {
-        const totalArea = summing(this.zones, this.zones[0].getArea)
-        const salaries = this.worker.calculateSalary(totalArea) + this.getAssignmentBonus();
+        let callback = null;
+        this.zones.forEach(zone => callback = zone.getArea)
+        const totalArea = summing(this.zones, callback);
         const bill = summing(this.zones, this.calculateZoneBillPrice.bind(this));
+        const salaries = this.worker.calculateSalary(totalArea) + this.getAssignmentBonus();
 
         return bill - salaries;
     }
